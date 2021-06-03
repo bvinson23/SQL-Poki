@@ -83,10 +83,10 @@ select top 1 p.title, p.wordcount
 	order by p.WordCount desc;
 
 --15. Which author(s) have the most poems? (Remember authors can have the same name.)
-select top 1 COUNT(p.title) NumberOfPoems, a.name
+select top 1 COUNT(p.title) NumberOfPoems, a.Name, a.Id
 	from Author a
 	left join Poem p on p.AuthorId = a.Id
-	group by a.Name
+	group by a.Name, a.Id
 	order by 1 desc;
 
 --16. How many poems have an emotion of sadness?
