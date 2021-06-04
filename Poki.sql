@@ -112,10 +112,10 @@ select top 1 COUNT(pe.poemId), e.name
 --19. Which grade has the largest number of poems with an emotion of joy?
 select top 1 COUNT(p.id) JoyPoemCount, g.name Grade
 	from Poem p
-	left join PoemEmotion pe on p.Id = pe.PoemId
-	left join Emotion e on pe.EmotionId = e.Id
-	left join Author a on p.AuthorId = a.Id
-	left join Grade g on a.GradeId = g.Id
+	join PoemEmotion pe on p.Id = pe.PoemId
+	join Emotion e on pe.EmotionId = e.Id
+	join Author a on p.AuthorId = a.Id
+	join Grade g on a.GradeId = g.Id
 	group by e.Name, e.Id, g.Name
 	having e.Name is not null and e.Id = 4
 	order by COUNT(p.id) desc;
